@@ -14,7 +14,7 @@
 
     </head>
     <body>
-
+@if(Request::is('admin*'))
     <div class="wrapper ">
         @include('layouts/partial/sidebar')
         <div class="main-panel">
@@ -23,6 +23,13 @@
             @include('layouts/partial/footer')
         </div>
     </div>
+    @else
+    <div id="app">
+        <div class="main-panel">
+            @yield('content')
+        </div>
+    </div>
+@endif
 
 
     <!--   Core JS Files   -->
