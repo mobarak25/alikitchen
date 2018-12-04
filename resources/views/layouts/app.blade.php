@@ -14,22 +14,24 @@
 
     </head>
     <body>
-@if(Request::is('admin*'))
-    <div class="wrapper ">
-        @include('layouts/partial/sidebar')
-        <div class="main-panel">
-            @include('layouts/partial/topbar')
-            @yield('content')
-            @include('layouts/partial/footer')
+    @if(Request::is('admin*'))
+        <div class="wrapper ">
+            @include('layouts/partial/sidebar')
+            <div class="main-panel">
+                @include('layouts/partial/topbar')
+                @yield('content')
+                @include('layouts/partial/footer')
+            </div>
         </div>
-    </div>
     @else
-    <div id="app">
-        <div class="main-panel">
-            @yield('content')
+        <div id="app">
+            <div class="main-panel">
+                @yield('content')
+            </div>
         </div>
-    </div>
-@endif
+    @endif
+
+   
 
 
     <!--   Core JS Files   -->

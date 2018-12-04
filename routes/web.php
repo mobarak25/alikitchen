@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+	N.B: See This.
+	Route::get('dashboard','Admin\DashboardController@index')->name('admin.dashboard');
+*/
 
-Route::get('admin/dashboard',function(){
-	return view('admin.dashboard');
+
+Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'Admin'],function(){
+	Route::get('dashboard','DashboardController@index')->name('dashboard');
 });
