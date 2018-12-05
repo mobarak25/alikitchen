@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
         <link href="{{url('backend')}}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <link href="{{url('backend')}}/demo/demo.css" rel="stylesheet" />
+        @stack('css')
 
     </head>
     <body>
@@ -236,5 +237,6 @@
 
     });
   </script>
+  @stack('scripts')
     </body>
 </html>
