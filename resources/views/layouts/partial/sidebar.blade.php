@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item {{Request::is('admin/slider*')?'active':''}}">
-                <a class="nav-link" href="{{ Route('slider.index') }}">
+                <a class="nav-link" href="{{ Route('sliders.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Slider</p>
                 </a>

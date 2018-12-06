@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Slider;
 
-class SliderController extends Controller
+class SlidersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class SliderController extends Controller
      */
     public function index(){
         $sliders = Slider::all();
-        return view('admin/slider/index',compact('sliders'));
+        return view('admin.slider.index',compact('sliders'));
     }
 
     /**
@@ -39,17 +39,17 @@ class SliderController extends Controller
         $image = $request->file('image');
         $orginalName = $image->getClientOriginalName();
         $unicname = mt_rand().$orginalName;
-        $folder = "slider_image";
+        $folder = "slider_image/";
         $upload = $image->move($folder,$unicname);
-        $url = $folder.'/'.$unicname;
+        $url = $folder.$unicname;
 
         
         $slider->title = $request->title;
         $slider->subtitle = $request->subtitle;
-        $slider->image = $request->$url;
+        $slider->image = $url;
         $slider->save();
 
-        return redirect('/admin/slider/create');
+        return redirect()->route('sliders.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class SliderController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -69,9 +69,9 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $slider = Slider::find($id);
+        return view('admin.slider.edit',compact('slider'));
     }
 
     /**
@@ -81,9 +81,27 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        dd($id);
+        /*$slider = Slider::find($id);
+        $image = $request->file('image');
+        if (isset($image)) {
+           $orginalName = $image->getClientOriginalName();
+            $unicname = mt_rand().$orginalName;
+            $folder = "slider_image/";
+            $upload = $image->move($folder,$unicname);
+            $url = $folder.$unicname; 
+        }else{
+            $url = $slider->image;
+        }
+
+        
+        $slider->title = $request->title;
+        $slider->subtitle = $request->subtitle;
+        $slider->image = $url;
+        $slider->update();
+
+        return redirect()->route('sliders.index');*/
     }
 
     /**

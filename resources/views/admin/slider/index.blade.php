@@ -6,9 +6,11 @@
 @endpush
 @section('content')
 <div class="content">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
+
 			<div class="col-md-12">
+				<a href="{{route('sliders.create')}}" class="btn btn-info" type="submit">ADD SLIDER</a>
 				<div class="card">
 					<div class="card-header card-header-primary">
 						<h4 class="card-title ">Simple Table</h4>
@@ -31,7 +33,7 @@
 										<td>{{$slider->title}}</td>
 										<td>{{$slider->subtitle}}</td>
 										<td>{{$slider->image}}</td>
-										<td><a href="#">sdf</a></td>
+										<td><a class="btn btn-info" href="{{ route('sliders.edit',$slider->id) }}">Edit</a></td>
 									</tr>
 									@endforeach
 								</tbody>

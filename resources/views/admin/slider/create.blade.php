@@ -13,7 +13,7 @@
 						<p class="card-category"> Here is a subtitle for this table</p>
 					</div>
 					<div class="card-body">
-						<form action="{{route('slider.store')}}" method="POST" enctype= multipart/form-data>
+						<form action="{{route('sliders.store')}}" method="POST" enctype= multipart/form-data>
 							@csrf
 						
 						<div class="form-group">
