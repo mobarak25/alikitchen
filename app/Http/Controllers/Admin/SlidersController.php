@@ -60,7 +60,7 @@ class SlidersController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        
     }
 
     /**
@@ -82,26 +82,25 @@ class SlidersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        dd($id);
-        /*$slider = Slider::find($id);
-        $image = $request->file('image');
+
+        $slider = Slider::find($id);
+        $image  = $request->file('image');
         if (isset($image)) {
            $orginalName = $image->getClientOriginalName();
-            $unicname = mt_rand().$orginalName;
-            $folder = "slider_image/";
-            $upload = $image->move($folder,$unicname);
-            $url = $folder.$unicname; 
+            $unicname   = mt_rand().$orginalName;
+            $folder     = "slider_image/";
+            $upload     = $image->move($folder,$unicname);
+            $url        = $folder.$unicname; 
         }else{
             $url = $slider->image;
         }
-
         
-        $slider->title = $request->title;
+        $slider->title    = $request->title;
         $slider->subtitle = $request->subtitle;
-        $slider->image = $url;
+        $slider->image    = $url;
         $slider->update();
 
-        return redirect()->route('sliders.index');*/
+        return redirect()->route('sliders.index')->with('successMsg','Slider Updat Successfully');
     }
 
     /**
@@ -110,8 +109,12 @@ class SlidersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $slider = Slider::find($id);
+        $image_path = $slider->image;
+        unlink($image_path);
+        $slider->delete();
+
+        return redirect('admin/sliders')->with('deleteMsg','Deleted Successfully');
     }
 }

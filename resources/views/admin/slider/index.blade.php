@@ -6,7 +6,9 @@
 @endpush
 @section('content')
 <div class="content">
+	
 	<div class="container-fluid">
+		@include('layouts.partial.msg')
 		<div class="row">
 
 			<div class="col-md-12">
@@ -33,7 +35,19 @@
 										<td>{{$slider->title}}</td>
 										<td>{{$slider->subtitle}}</td>
 										<td>{{$slider->image}}</td>
-										<td><a class="btn btn-info" href="{{ route('sliders.edit',$slider->id) }}">Edit</a></td>
+										<td>
+											<a class="btn btn-info" href="{{ route('sliders.edit',$slider->id) }}">Edit</a>
+
+											<a class="btn btn-info" href="{{ route('sliders.destroy', $slider->id) }}" 
+											onclick="event.preventDefault();
+                                         	document.getElementById('delete-form-{{$slider->id}}').submit();">Delete</a>
+
+                                         	<form id="delete-form-{{$slider->id}}" action="{{ route('sliders.destroy', $slider->id) }}" method="POST" style="display: none;">
+					                            @csrf
+					                            @method('DELETE')
+					                        </form>
+										</td>
+
 									</tr>
 									@endforeach
 								</tbody>

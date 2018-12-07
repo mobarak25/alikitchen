@@ -9,9 +9,9 @@
 						<h4 class="card-title ">Edit Slider</h4>
 					</div>
 					<div class="card-body">
-						<form action="{{url('sliders.update',$slider->id)}}" @method('PUT')>
+						<form action="{{route('sliders.update',$slider->id)}}" enctype="multipart/form-data"  method="POST">
 							 @csrf
-							 
+							 @method('PUT')
 							<div class="form-group">
 								<label class="bmd-label-floating">Title</label>
 								<input type="text" name="title" class="form-control" value="{{$slider->title}}">
@@ -24,7 +24,7 @@
 								<input type="file" name="image">
 							</div>							
 							<div class="form-group">
-								<input type="submit" value="Edit SLIDER">
+								<input type="submit" value="UPDATE SLIDER" class="btn btn-primary">
 							</div>
 						</form>
 					</div>
