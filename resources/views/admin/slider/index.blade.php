@@ -22,16 +22,19 @@
 						<div class="responsive">
 							<table id="example" class="table table-striped table-bordered" style="width:100%">
 								<thead class=" text-primary">
-									<th>SI.</th>
+									<th class="text-center">SI.</th>
 									<th>Title</th>
 									<th>Subtitle</th>
 									<th>Image</th>
 									<th>Action</th>
 								</thead>
 								<tbody>
+										@php
+											$i = 1;
+										@endphp
 									@foreach($sliders as $slider)
 									<tr>
-										<td>1</td>
+										<td class="text-center">{{$i++}}</td>
 										<td>{{$slider->title}}</td>
 										<td>{{$slider->subtitle}}</td>
 										<td>{{$slider->image}}</td>
