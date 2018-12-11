@@ -28,30 +28,20 @@
                 });
             });
         </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script>
-            function initialize() {
-                var mapCanvas = document.getElementById('map-canvas');
-                var mapOptions = {
-                    center: new google.maps.LatLng(24.909439, 91.833800),
-                    zoom: 16,
-                    scrollwheel: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map(mapCanvas, mapOptions)
-
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(24.909439, 91.833800),
-                    title:"Mamma's Kitchen Restaurant"
-                });
-
-                // To add the marker to the map, call setMap();
-                marker.setMap(map);
+        <style>
+        @php
+           $i = 1;
+        @endphp
+        @foreach ($sliders as $slider)
+           .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child({{$i++}}) .item{
+                background: url({{ url($slider->image) }});
+                background-size:cover;
             }
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-
+        @endforeach
+           .owl-item:nth-child(3) .header-content{
+                float: right;
+           }
+        </style>
 
     </head>
     <body data-spy="scroll" data-target="#template-navbar">
@@ -90,30 +80,18 @@
 
         <!--== 5. Header ==-->
         <section id="header-slider" class="owl-carousel">
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">BEST FOOD</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
+            @foreach($sliders as $slider)
+                <div class="item">
+                    <div class="container">
+                        <div class="header-content">
+                            <h1 class="header-title">{{$slider->title}}</h1>
+                            <p class="header-sub-title">{{$slider->subtitle}}</p>
+                        </div> <!-- /.header-content -->
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">BEST SNACKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="header-content text-right pull-right">
-                        <h1 class="header-title">BEST DRINKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
+            @endforeach
+
+
         </section>
 
 
@@ -169,7 +147,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="row">  
+                    <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <ul id="menu-pricing" class="menu-price">
                                 <li class="item dinner">
@@ -183,7 +161,7 @@
                                             </span>
                                         </div>
                                     </a>
-                                        
+
                                     <h2 class="white">$20</h2>
                                 </li>
 
@@ -198,7 +176,7 @@
                                             </span>
                                         </div>
                                     </a>
-                                        
+
                                     <h2 class="white">$20</h2>
                                 </li>
                                 <li class="item desert">
@@ -212,7 +190,7 @@
                                             </span>
                                         </div>
                                     </a>
-                                        
+
                                     <h2 class="white">$18</h2>
                                 </li>
                                 <li class="item breakfast special">
@@ -226,7 +204,7 @@
                                             </span>
                                         </div>
                                     </a>
-                                        
+
                                     <h2 class="white">$15</h2>
                                 </li>
                                 <li class="item breakfast">
@@ -240,7 +218,7 @@
                                             </span>
                                         </div>
                                     </a>
-                                        
+
                                     <h2 class="white">$20</h2>
                                 </li>
                                 <li class="item dinner special">
@@ -296,20 +274,20 @@
                                             </span>
                                         </div>
                                     </a>
-                                    
+
                                     <h2 class="white">$38</h2>
-                                </li>  
+                                </li>
                             </ul>
 
                             <!-- <div class="text-center">
                                     <a id="loadPricingContent" class="btn btn-middle hidden-sm hidden-xs">Load More <span class="caret"></span></a>
                             </div> -->
 
-                        </div>   
+                        </div>
                     </div>
                 </div>
 
-            </div> 
+            </div>
         </section>
 
 
@@ -323,7 +301,7 @@
                             <h2 class="section-title">Great Place to enjoy</h2>
                         </div>
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-                            
+
                         </div>
                     </div> <!-- /.dis-table -->
                 </div> <!-- /.row -->
@@ -370,7 +348,7 @@
                             <h2 class="section-title">Our Breakfast Menu</h2>
                         </div>
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-                            
+
                         </div>
                     </div> <!-- /.dis-table -->
                 </div> <!-- /.row -->
@@ -419,7 +397,7 @@
                             <h2 class="section-title">Our Featured Dishes Menu</h2>
                         </div>
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-                            
+
                         </div>
                     </div> <!-- /.dis-table -->
                 </div> <!-- /.row -->
@@ -736,7 +714,7 @@
                         <div class="gallery-heading hidden-xs color-bg" style="width: 50%; float:right;">
                             <h2 class="section-title">Have A Look To Our Dishes</h2>
                         </div>
-                        
+
 
                     </div> <!-- /.row -->
                 </div> <!-- /.container-fluid -->
@@ -756,7 +734,7 @@
                             <h2 class="section-title">Reserve A Table !</h2>
                         </div>
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-                            
+
                         </div>
                     </div> <!-- /.dis-table -->
                 </div> <!-- /.row -->
@@ -802,7 +780,7 @@
                                                 Make a reservation
                                             </button>
                                         </div>
-                                            
+
                                     </div>
                                 </form>
                             </div>
@@ -880,7 +858,7 @@
                     <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
                         <div class="row">
                              <form class="contact-form" method="post" action="contact.php">
-                                
+
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Name">
@@ -924,7 +902,7 @@
             </div>
         </footer>
 
-    
+
         <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('frontend/js/jquery.mixitup.min.js')}}" ></script>
@@ -933,7 +911,7 @@
         <script type="text/javascript" src="{{asset('frontend/js/jquery.hoverdir.js')}}"></script>
         <script type="text/javascript" src="{{asset('frontend/js/jQuery.scrollSpeed.js')}}"></script>
         <script src="{{asset('frontend/js/script.js')}}"></script>
-        
+
 
     </body>
 </html>

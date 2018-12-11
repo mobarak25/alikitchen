@@ -15,7 +15,7 @@ class SlidersController extends Controller
      */
     public function index(){
         $sliders = Slider::all();
-        return view('admin.slider.index',compact('sliders'));
+        return view('admin.slider.index',compact('sliders'))->with('successfully','Added Successfully');
     }
 
     /**

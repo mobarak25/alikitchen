@@ -23,6 +23,12 @@
                     <p>Slider</p>
                 </a>
             </li>
+            <li class="nav-item {{Request::is('admin/category*')?'active':''}}">
+                <a class="nav-link" href="{{ Route('category.index') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Category</p>
+                </a>
+            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="./user.html">
                     <i class="material-icons">person</i>

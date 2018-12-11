@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Slider;
+
 
 class HomeController extends Controller
 {
@@ -17,8 +19,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('welcome');
+
+    
+    public function index(){
+        $sliders = Slider::all();
+        return view('/welcome',compact('sliders'));
     }
 }
