@@ -12,6 +12,7 @@
 */
 
 Route::get('/','HomeController@index')->name('welcome');
+Route::post('/reservation','ReservationController@reserv')->name('reservation.reserv');
 
 Auth::routes();
 
@@ -25,4 +26,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'Admin'],funct
 	Route::get('dashboard','DashboardController@index')->name('admin.dashboard');
 	Route::resource('sliders', 'SlidersController');
 	Route::resource('category', 'CategoryController');
+	Route::resource('item', 'ItemController');
+	Route::get('reservation', 'ReservationController@index')->name('reservation.index');
+	Route::get('reservation-statue/{id}', 'ReservationController@status')->name('reservation.status');
 });
